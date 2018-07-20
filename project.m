@@ -18,7 +18,7 @@ for i=1:10
    mu{i} = avg;
 end
 
-A = generate_feature(U);
+A = generate_feature(U);  %creat a population 
 
 % t0=cputime;
 % Classify(U,mu);
