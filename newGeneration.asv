@@ -1,0 +1,18 @@
+function [ output_args ] = newGeneration( input_args )
+%NEWGENERATION Summary of this function goes here
+%   Detailed explanation goes here
+
+
+% SELECTION
+%   - Stochastic
+%   - Assign weights to each feature vector
+%   - The weight can be determined by dividing fitness by sum of fitness
+%   - Pick the top vectors at random (taking into account weights)
+
+% CROSSOVER
+%   - From the selected vectors, use crossover to create offspring
+%   - I think you have to have two par
+
+
+end
+

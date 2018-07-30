@@ -21,4 +21,4 @@ for j=1:N
     end
 end
 
-error_rate = error/N*100
+error_rate = error/N*100 %We need this to be in a vector

@@ -1,0 +1,15 @@
+
+
+function [ Fit ] = fitness( Feature,error_rate )
+% This function is dedicated to assessing the fitness of the feature
+% vectors. The function takes in the Feature vector and the error_rate.
+% The function outputs a vector of fitness values which correspond to each
+% feature vector.
+
+    temp = [];
+
+    
+    
+
+end
+
