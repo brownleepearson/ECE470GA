@@ -1,7 +1,7 @@
 
 clear all
 load('X1200.mat')
-U=cell(1,10);%init the container for feature vector
+fea_library=cell(1,10);%init the container for feature vector
 mu=cell(1,10);%calculate mean of the training data
 Uq_test=[];
 m=1200;%m is the size of each class in the training data
@@ -13,14 +13,15 @@ for i=1:10
    Xh = x-avg;
    C= Xh*Xh';
    [u,~] = eigs(C,n);
-   U{i}= u;             %Eigenvectors a.k.a feature vectors
+   fea_library{i}= u;             
    mu{i} = avg;
 end
-
-A = generate_feature(U);  %create a population 
+population = gen_population;  %create a population 
+individual= population{1};
+feature = gen_feature(fea_library,individual);
 
 % t0=cputime;
-% Classify(U,mu);
+%Classify(U,mu);
 % t1 = cputime-t0
 
 fitness(A,error_rate);
