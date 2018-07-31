@@ -1,11 +1,8 @@
-function  out = Classify(U,mu)
-load('Te28.mat')
-load('Lte28.mat')
-error = 0;
-N=10000;
-
+function  out = Classify(U,mu,test,label)
+error = zeros(1,10);
+N=size(test,2);
 for j=1:N
-    X = Te28(:,j);
+    X = test(:,j);
     distance = zeros(1,10);
     for k=1:10
         Uq = U{k};
@@ -16,11 +13,11 @@ for j=1:N
     end
     [~,index] = min(distance);
     index = index -1;
-    if index ~= Lte28(j,1)
-        error = error +1;
+    if index ~= label(j,1)
+        m=floor(j/401)+1;
+        error(1,m) = error(1,m) +1;
     end
 end
-error_rate = error/N*100; %Computes the error rate for the individual
+error_rate = error/4; %Computes the error rate for the individual
 out = error_rate;
 end
-
