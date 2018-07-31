@@ -1,4 +1,12 @@
 function out = generate_feature(Uq)
+% generate the feature vector
+% full vector, not just 1 and 0
+% the output stored in cell matrix
+% out{i} access the indivisual class
+% where i is from 1 to 10 represent class 0~9
+% each class(0~9) has 90-110 samples
+% these 100 ish samples are selected from the 200 largest eigen vectors
+
   feature = cell(1,10);
   temp=[];
   for j=1:10
@@ -12,6 +20,5 @@ function out = generate_feature(Uq)
     feature{j} = temp;
     temp = [];
   end
-  
   out = feature;
 end
