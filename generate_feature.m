@@ -9,6 +9,8 @@ function out = generate_feature(Uq)
 
   feature = cell(1,10);
   temp=[];
+  
+  %generate feature vector
   for j=1:10
     A = randi([0 1],1,200);  
     Uqq = Uq{j};
@@ -21,4 +23,5 @@ function out = generate_feature(Uq)
     temp = [];
   end
   out = feature;
+  
 end
