@@ -17,8 +17,12 @@ for i=1:10
    mu{i} = avg;
 end
 population = gen_population;  %create a population 
-individual= population{1};
-feature = gen_feature(fea_library,individual);
+
+for j=1:10
+    individual= population{j};
+    feature = gen_feature(fea_library,individual);
+    count(j) = Classify(feature,mu);
+end
 
 % t0=cputime;
 %Classify(U,mu);

@@ -1,4 +1,4 @@
-function  Classify(U,mu)
+function  out = Classify(U,mu)
 load('Te28.mat')
 load('Lte28.mat')
 error = 0;
@@ -20,5 +20,7 @@ for j=1:N
         error = error +1;
     end
 end
+error_rate = error/N*100; %Computes the error rate for the individual
+out = error_rate;
+end
 
-error_rate = error/N*100 %Computes the error rate for the individual
