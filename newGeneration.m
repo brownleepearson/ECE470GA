@@ -1,4 +1,4 @@
-function new = newGeneration( input_args )
+function new = newGeneration( population, Fit_matrix )
 %NEWGENERATION Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -8,6 +8,11 @@ function new = newGeneration( input_args )
 %   - Assign weights to each feature vector
 %   - The weight can be determined by dividing fitness by sum of fitness
 %   - Pick the top vectors at random (taking into account weights)
+
+
+
+
+
 
 % CROSSOVER
 %   - From the selected vectors, use crossover to create offspring
