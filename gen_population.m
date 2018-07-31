@@ -1,4 +1,4 @@
-function out = gen_individual
+function out = gen_population
 
 population = cell(1,10);
 index=[];

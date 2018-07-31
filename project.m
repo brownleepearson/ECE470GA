@@ -16,7 +16,7 @@ for i=1:10
    feature_library{i}= u;             
    mu{i} = avg;
 end
-population = gen_individual;  %create a population 
+population = gen_population;  %create a population 
 
 % t0=cputime;
 %Classify(U,mu);
