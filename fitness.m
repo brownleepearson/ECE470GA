@@ -1,6 +1,6 @@
 
 
-function [ Fit ] = fitness( population, error_array )
+function [ Fit_matrix ] = fitness( population, error_matrix )
 % This function is dedicated to assessing the fitness of the feature
 % vectors. The function takes in the Feature vector and the error_rate.
 % The function outputs a vector of fitness values which correspond to each
@@ -46,18 +46,27 @@ function [ Fit ] = fitness( population, error_array )
 %
 %   The error e
 
-tempVect = [];
 
-    for i = 1:10
+%I need to get fitness values for each of the
+Fit = zeros(10,10);
+
+for i = (1:10)
+    
+    individual = population{i};
+    
+    for j = (1:10)
+        ones = sum(individual(j,:) == 1); 
+        % Ones in the jth digit in individual i
+        error = error_matrix(j,i);
+        % Selects error in digit j for Invidual i,
         
-        ones = sum(feature(i,:) == 1); %Counts the number of features used
-        error = error_rate[i];
-        
-        tempVect[i] = (1-error)/ones;
-        
+        Fit(j,i) = (1-error)/ones; % Fitness function
+            % The fitness function divides the success rate by the
+            % number of features (ones) used to acheive it.
+            % We want to maximize success and minimize error   
     
     end
     
-    Fit = tempVect; 
 end
 
+Fit_matrix = Fit;
