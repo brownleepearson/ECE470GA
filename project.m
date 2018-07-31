@@ -14,7 +14,7 @@ for i=1:10
    Xh = x-avg;
    C= Xh*Xh';
    [u,~] = eigs(C,n);
-   U{i}= u;
+   U{i}= u;             %Eigenvectors a.k.a feature vectors
    mu{i} = avg;
 end
 

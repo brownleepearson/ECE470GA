@@ -21,4 +21,4 @@ for j=1:N
     end
 end
 
-error_rate = error/N*100 %We need this to be in a vector
+error_rate = error/N*100 %Computes the error rate for the individual
