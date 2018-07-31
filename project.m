@@ -1,12 +1,11 @@
 
 clear all
 load('X1200.mat')
-mu=[];
-U=cell(1,10);
-mu=cell(1,10);
+U=cell(1,10);%init the container for feature vector
+mu=cell(1,10);%calculate mean of the training data
 Uq_test=[];
-m=1200;
-n=200;
+m=1200;%m is the size of each class in the training data
+n=200; %n determine the size of the feature vector(784 by n)
 
 for i=1:10
    x = X1200(:,m*(i-1)+1:m*i);
