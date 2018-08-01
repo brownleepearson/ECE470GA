@@ -10,16 +10,16 @@ n=200; %n determine the size of the feature vector(784 by n)
 error_matrix=zeros(10,10);
 
 for i=1:10
-   x = X1200(:,m*(i-1)+1:m*i-400);
-   test = X1200(:,(m*i-400)+1:m*i);
-   data_test = [data_test,test];
-   data_ans = [data_ans;i*ones(400,1)-1];
-   avg = mean(x,2);
-   Xh = x-avg;
-   C= Xh*Xh';
-   [u,~] = eigs(C,n);
-   fea_library{i}= u;             
-   mu{i} = avg;
+   x = X1200(:,m*(i-1)+1:m*i-400);          %generate training data
+   test = X1200(:,(m*i-400)+1:m*i);         %generate test data step1
+   data_test = [data_test,test];            %generate test data step2
+   data_ans = [data_ans;i*ones(400,1)-1];   %generate label for test data
+   avg = mean(x,2);     %PCA
+   Xh = x-avg;          %PCA
+   C= Xh*Xh';           %PCA
+   [u,~] = eigs(C,n);   %PCA
+   fea_library{i}= u;   %PCA, create all the features used later        
+   mu{i} = avg;         %PCA
 end
 population = gen_population;  %create a population 
 
@@ -29,9 +29,12 @@ for j=1:10
     error_matrix(j,:) = Classify(feature,mu,data_test,data_ans);
 end
 
+fitness_matrix = fitness(population,error_matrix);
+
+
 % t0=cputime;
 %Classify(U,mu);
 % t1 = cputime-t0
 
-fitness(A,error_rate);
+
 
