@@ -55,12 +55,12 @@ for i = (1:10)
     individual = population{i};
     
     for j = (1:10)
-        ones = sum(individual(j,:) == 1); 
+        ones = sum(individual(:,j)); 
         % Ones in the jth digit in individual i
-        error = error_matrix(j,i);
+        error = error_matrix(i,j);
         % Selects error in digit j for Invidual i,
         
-        Fit(j,i) = (1-error)/ones; % Fitness function
+        Fit(i,j) = (100-error)/ones; % Fitness function
             % The fitness function divides the success rate by the
             % number of features (ones) used to acheive it.
             % We want to maximize success and minimize error   
