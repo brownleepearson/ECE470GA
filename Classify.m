@@ -5,11 +5,11 @@ for j=1:N                   %loop going through all the test samples
     X = test(:,j);
     distance = zeros(1,10); %projection distance onto the feature vector space
     for k=1:10
-        Uq = U{k};                          %calculate the distance step1
-        mean1 = mu{k};                      %calculate the distance step2
-        z0 = Uq'*(X-mean1);                 %calculate the distance step3
-        z1 = Uq*z0;                         %calculate the distance step4
-        distance(k) = norm(X - mean1 - z1); %calculate the distance step5
+        Uq = U{k};                          %calculate the projection distance step1
+        mean1 = mu{k};                      %calculate the projection distance step2
+        z0 = Uq'*(X-mean1);                 %calculate the projection distance step3
+        z1 = Uq*z0;                         %calculate the projection distance step4
+        distance(k) = norm(X - mean1 - z1); %calculate the projection distance step5
     end
     [~,index] = min(distance);  %find the minimium distance which indicate the digit
     index = index -1;           %-1 because matlab use 1-10, and we use 0-9
