@@ -1,4 +1,4 @@
-function new = newGeneration( population, fitness_matrix )
+function new = newGeneration( population, Fit_matrix )
 %NEWGENERATION Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -23,6 +23,8 @@ function new = newGeneration( population, fitness_matrix )
 %
 %
 
+
+
 parents = cell(2,10);
 
 for i = (1:10) %iterates through digits
@@ -33,6 +35,8 @@ for i = (1:10) %iterates through digits
     firstIndv = 0;
     secondIndv = 0;
 
+    digit = 
+
     for j = (1:10) %iterates through individuals
     %iterates down the rows
         
@@ -42,11 +46,13 @@ for i = (1:10) %iterates through digits
             
             firstBest = fitness_matrix(j,i);
             firstIndv = j;
-        end  
+        end
+        
+        
     end
     
     parent1 = population{firstIndv}; %select best individual
-    parent2 = population{secondIndv};
+    parent2 = population{secondIndv}
     parents{1,i} = parent1(:,i);
     parents{2,i} = parent2(:,i);
     
