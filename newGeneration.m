@@ -25,7 +25,7 @@ function new = newGeneration( population, fitness_matrix )
 
 parents = cell(2,10);
 
-for i = (1:10) %iterates through digits
+for p = (1:10) %iterates through digits
 %iterates down the columns
     
     firstBest = 0;
@@ -33,26 +33,32 @@ for i = (1:10) %iterates through digits
     firstIndv = 0;
     secondIndv = 0;
 
-    for j = (1:10) %iterates through individuals
+    for q = (1:10) %iterates through individuals
     %iterates down the rows
         
-        if fitness_matrix(j,i) >= firstBest
+        if (fitness_matrix(q,p)*100) >= firstBest
             secondBest=firstBest;
             secondIndv=firstIndv;
             
-            firstBest = fitness_matrix(j,i);
-            firstIndv = j;
+            firstBest = fitness_matrix(q,p);
+            firstIndv = q;
         end  
     end
     
     parent1 = population{firstIndv}; %select best individual
     parent2 = population{secondIndv};
-    parents{1,i} = parent1(:,i);
-    parents{2,i} = parent2(:,i);
-    
-end
+    parents{1,p} = parent1(:,p);
+    parents{2,p} = parent2(:,p);
     
 
+    
+end
+
+    new = parents;
+
+%new = parents;
+    
+%Two point ('crossovertwopoint')
 % CROSSOVER
 %   - From the selected vectors, use crossover to create offspring
 %   - I think you have to have two parents to make a crossover
