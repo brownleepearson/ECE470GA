@@ -33,8 +33,7 @@ for p = (1:10) %iterates through digits
     for q = (1:10) %iterates through individuals
     %iterates down the rows
         
-        if (fitness_matrix(q,p)*100) >= firstBest
-            secondBest=firstBest;
+        if (fitness_matrix(q,p)) >= firstBest
             secondIndv=firstIndv;
             
             firstBest = fitness_matrix(q,p);

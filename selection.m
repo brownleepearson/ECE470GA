@@ -1,7 +1,9 @@
-function out = selection(error_matrix,population)
+function out = selection(fitness_matrix,population)
 p0=[];        %first parent after selection 
 p1=[];        %second parent after selection 
-[~,best_indv] = min(error_matrix); % find which individual have best performance on which digit
+second_best = zeros(1,10);
+population2 = cell(1,10);
+[~,best_indv] = max(fitness_matrix); % find which individual have best performance on which digit
 
 for i=1:10                      %first parent
     indv = best_indv(i);        %locate the individual 
@@ -11,29 +13,32 @@ for i=1:10                      %first parent
 end
 
 for j=1:10                                          %second parent
-    error_per_d = error_matrix(:,j);                %locate the individual which gives 2nd smallest error
+    error_per_d = fitness_matrix(:,j);                %locate the individual which gives 2nd smallest error
     rearranged = sort(error_per_d);                 %locate the individual which gives 2nd smallest error
-    [indv0,~] = find(error_per_d == rearranged(2)); %locate the individual which gives 2nd smallest error
+    [indv0,~] = find(error_per_d == rearranged(9)); %locate the individual which gives 2nd smallest error
     digit = j;                                      %locate the digit
     temp = population{indv0};
     p1 =[p1, temp(:,digit)];    %get the feature for best performing digit k, k=1~10
+    second_best(j)=indv0(1);    %if there two identical second smallest, just get one and igore the other
 end
-out = {p0,p1};
-
 
 %Crossover
-% for y=1:10
-%     for x=1:200
-%         if p0(x,y)== p1(x,y)
-%            new(x,y) =  p0(x,y);
-%         elseif randi(2,1) == 1
-%            new(x,y) =  p0(x,y);
-%         else
-%            new(x,y) =  p1(x,y); 
-%         end
-%     end
-% end
-
+for p=1:10  %loop to generate 10 new individual 
+    new = zeros(200,10);
+    for y=1:10  
+        for x=1:200
+            if p0(x,y)== p1(x,y)
+            new(x,y) =  p0(x,y);
+            elseif randi(2,1) == 1
+            new(x,y) =  p0(x,y);
+            else
+            new(x,y) =  p1(x,y); 
+            end
+        end
+    end
+    population2{p} = new;
+end
+out = population2;
 end
 
 

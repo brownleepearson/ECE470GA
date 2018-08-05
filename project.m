@@ -8,6 +8,7 @@ data_ans=[];
 m=1200;%m is the size of each class in the training data
 n=200; %n determine the size of the feature vector(784 by n)
 error_matrix=zeros(10,10);
+error_matrix2 = zeros(10,10);
 
 
 for i=1:10
@@ -32,13 +33,16 @@ end
 
 error_matrix = round(error_matrix);
 
-parents = selection(error_matrix,population);
+fitness_matrix = fitness(population,error_matrix);
+population2 = selection(fitness_matrix,population);
 
-
-
-
- fitness_matrix = fitness(population,error_matrix);
- population2 = newGeneration(population, fitness_matrix); 
+for k=1:10
+    individual= population2{k};
+    feature = gen_feature(fea_library,individual);
+    error_matrix2(k,:) = Classify(feature,mu,data_test,data_ans);
+end
+error_matrix2 = round(error_matrix2);
+%population2 = newGeneration(population, fitness_matrix); 
 % disp('')
 
 % t0=cputime;
