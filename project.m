@@ -37,8 +37,8 @@ parents = selection(error_matrix,population);
 
 
 
-% fitness_matrix = fitness(population,error_matrix);
-% population2 = newGeneration(population, fitness_matrix); 
+ fitness_matrix = fitness(population,error_matrix);
+ population2 = newGeneration(population, fitness_matrix); 
 % disp('')
 
 % t0=cputime;
