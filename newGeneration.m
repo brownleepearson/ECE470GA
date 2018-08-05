@@ -1,4 +1,4 @@
-function out = newGeneration( population, fitness_matrix )
+function new = newGeneration( population, fitness_matrix )
 %NEWGENERATION Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -49,24 +49,12 @@ for p = (1:10) %iterates through digits
  
 end
 
-    
-% new = zeros(200,10);
-%new = parents;
+
+new = parents;
     
 %Two point ('crossovertwopoint')
 % CROSSOVER
 %   - From the selected vectors, use crossover to create offspring
-% for y=1:10
-%     for x=1:200
-%         if p0(x,y)== p1(x,y)
-%            new(x,y) =  p0(x,y);
-%         elseif randi(2,1) == 1
-%            new(x,y) =  p0(x,y);
-%         else
-%            new(x,y) =  p1(x,y); 
-%         end
-%     end
-% end
 % 
 %     out = new;
 % MUTATION

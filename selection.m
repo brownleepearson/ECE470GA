@@ -19,6 +19,21 @@ for j=1:10                                          %second parent
     p1 =[p1, temp(:,digit)];    %get the feature for best performing digit k, k=1~10
 end
 out = {p0,p1};
+
+
+%Crossover
+% for y=1:10
+%     for x=1:200
+%         if p0(x,y)== p1(x,y)
+%            new(x,y) =  p0(x,y);
+%         elseif randi(2,1) == 1
+%            new(x,y) =  p0(x,y);
+%         else
+%            new(x,y) =  p1(x,y); 
+%         end
+%     end
+% end
+
 end
 
 
