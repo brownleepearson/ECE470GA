@@ -1,4 +1,4 @@
-function new = newGeneration( population, fitness_matrix )
+function out = newGeneration( population, fitness_matrix )
 %NEWGENERATION Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -18,10 +18,7 @@ function new = newGeneration( population, fitness_matrix )
 %   parents = { best digit 1  , best digit 2  , ... , best digit 10  }
 %             { 2nd best dgt 1, 2nd best dgt 2, ... , 2nd best dgt 10}
 %
-%
-%
-%
-%
+
 
 parents = cell(2,10);
 
@@ -45,25 +42,33 @@ for p = (1:10) %iterates through digits
         end  
     end
     
-    parent1 = population{firstIndv}; %select best individual
-    parent2 = population{secondIndv};
-    parents{1,p} = parent1(:,p);
-    parents{2,p} = parent2(:,p);
-    
-
-    
+    p0 = population{firstIndv}; %select best individual
+    p1 = population{secondIndv};
+    parents{1,p} = p0(:,p);
+    parents{2,p} = p1(:,p);
+ 
 end
 
-    new = parents;
-
+    
+% new = zeros(200,10);
 %new = parents;
     
 %Two point ('crossovertwopoint')
 % CROSSOVER
 %   - From the selected vectors, use crossover to create offspring
-%   - I think you have to have two parents to make a crossover
-%   - You only make enough offspring to equal the population size
-
+% for y=1:10
+%     for x=1:200
+%         if p0(x,y)== p1(x,y)
+%            new(x,y) =  p0(x,y);
+%         elseif randi(2,1) == 1
+%            new(x,y) =  p0(x,y);
+%         else
+%            new(x,y) =  p1(x,y); 
+%         end
+%     end
+% end
+% 
+%     out = new;
 % MUTATION
 %   - Use a mutation function to just randomly change a couple offspring
 

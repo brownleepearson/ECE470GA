@@ -29,10 +29,17 @@ for j=1:10
     feature = gen_feature(fea_library,individual);
     error_matrix(j,:) = Classify(feature,mu,data_test,data_ans);
 end
-error_matrix = round(error_matrix);
-fitness_matrix = fitness(population,error_matrix);
 
-population2 = newGeneration(population, fitness_matrix); 
+error_matrix = round(error_matrix);
+
+parents = selection(error_matrix,population);
+
+
+
+
+% fitness_matrix = fitness(population,error_matrix);
+% population2 = newGeneration(population, fitness_matrix); 
+% disp('')
 
 % t0=cputime;
 %Classify(U,mu);
