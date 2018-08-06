@@ -9,7 +9,7 @@ function out = gen_population
         for j=1:200
             % 0 has a 60% chance of being chosen
             % 1 has a 40% chance of being chosen
-            A = randsample([0 1],10, true, [0.6 0.4]);
+            A = randsample([0 1],10, true, [0.65 0.35]);
            %A = randi([0 1],200,1);
             index = [index; A];
         end
@@ -17,5 +17,8 @@ function out = gen_population
         index=[];
     end
     out = population;
+    z = population{1};
+    ones = sum(z(:))/10
+    
 end
 
