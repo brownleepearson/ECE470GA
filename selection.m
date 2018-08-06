@@ -1,4 +1,4 @@
-function out = selection(fitness_matrix,population,mutation_rate)
+function [out1,out2] = selection(fitness_matrix,population,mutation_rate)
 p1=[];        %first parent after selection 
 p2=[];        %second parent after selection 
 second_best = zeros(1,10);
@@ -13,6 +13,7 @@ for i=1:10                      %first parent
     p1 =[p1, temp(:,digit)];    %get the feature for best performing digit k, k=1~10
 end
 population2{1} = p1;
+out2 = sum(p1(:))/10;
 
 %Find second best individual (Will be Elitism Individual and Parent)
 for j=1:10                                          %second parent
@@ -58,7 +59,7 @@ for k=7:10                          %loop through last 4 individuals
     population2{k} = indv_mut;      %push the mutated indv back to population
 end                                 %end of the mutation for the population
 
-out = population2;
+out1 = population2;
 
 end
 

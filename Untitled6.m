@@ -1,14 +1,4 @@
-
-clear all
-m = 10;
-error_matrix = ce
-
-% This funciton will initialize the first generation and the testing data
-[population,fea_library,mu,data_test,data_ans]=initialize();
-t0=cputime;
-
-for n=1:m
-    n
+for n=60:80
     for j=1:10  %this loop classify the population to find error rate
     individual= population{j};
     feature = gen_feature(fea_library,individual);
@@ -17,12 +7,12 @@ for n=1:m
 
     error_perGen{n} = round(error_matrix);
     fitness_matrix = fitness(population,error_matrix);
-    [population,feature_used(n)] = selection(fitness_matrix,population,0.2);
-    error_matrix=zeros(10,10); 
- 
-end 
+    population = selection(fitness_matrix,population,0.1);
+    error_matrix=zeros(10,10);
 
-for i=1:10
+end
+
+for i=60:80
     a = error_perGen{i};
     for j=1:10
     indv_error(j) = sum(a(j,:))/10;
@@ -30,15 +20,3 @@ for i=1:10
     aaa(i) = min(indv_error);
 end
 plot(aaa)
-
-t1 = cputime-t0
-
-
-
-
-%t0=cputime;
-%Classify(U,mu);
-%t1 = cputime-t0
-
-
-
